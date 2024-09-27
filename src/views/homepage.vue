@@ -3,7 +3,22 @@
         <div class="top-one">首页</div>
         <router-link to="/about">Home</router-link> 
         <div class="top-two" >
-            <img src="../assets/1.jpg" alt="" class="top-img">
+            <!-- 轮播图 -->
+            <van-swipe class="my-swipe" :autoplay="3000" indicator-color="white">
+  <van-swipe-item >
+    <img src="../assets/1.jpg" class="l-1">
+  </van-swipe-item>
+  <van-swipe-item>
+    <img src="../assets/l-3.jpg"  class="l-1">
+  </van-swipe-item>
+  <van-swipe-item>
+    <img src="../assets/l-1.jpeg"  class="l-1">
+  </van-swipe-item>
+  <van-swipe-item>
+    <img src="../assets/l-2.jpeg"  class="l-1">
+  </van-swipe-item>
+</van-swipe>
+            <!-- <img src="../assets/1.jpg" alt="" class="top-img"> -->
         </div>
         <div class="top-three">  <!--  两个模块-->
             <div class="top-three-left">
@@ -85,13 +100,27 @@
             </div>
         </div>
     </section>
-    <footer >底部
+    <footer >
+        <!-- <div class="footer-img">
+           
+        </div>
+        <div class="footer-img">
+            <!-- <img src="../assets/1.jpg" alt="" class="top-img"> -->
 
-       
+        <!-- </div> --> -->
+<!-- 底部标签 -->
+       <van-tabbar v-model="active">
+  <van-tabbar-item icon="home-o">标签</van-tabbar-item>
+  <van-tabbar-item icon="search">标签</van-tabbar-item>
+  <van-tabbar-item icon="friends-o">标签</van-tabbar-item>
+  <van-tabbar-item icon="setting-o">标签</van-tabbar-item>
+</van-tabbar>
+
 
     </footer>
+    <footer></footer>
     
-
+ 
    
 </template>
 <script >
@@ -157,8 +186,20 @@ header>div{
    
     height: 278px;
  
-    
+ 
 }
+/* 轮播图 */
+ .my-swipe .van-swipe-item {
+     color: #fff;
+    font-size: 20px;
+    line-height: 150px;
+    text-align: center;
+    /* background-color: #39a9ed; */
+  }
+  .l-1{
+    width: 672px;
+    height: 278px;
+  }
 .top-img{
 height:278px ;
 width: 670px;
@@ -390,10 +431,17 @@ section{
     
 }
 footer{
+    float: left;
     background: blueviolet;
     height: 100px;
     width: 750px;
    
+}
+.footer-img{
+    width: 50%;
+    height: 100px;
+    background: bisque;
+
 }
 
 </style>
