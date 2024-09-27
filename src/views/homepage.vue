@@ -1,7 +1,7 @@
 <template>
   <header>
     <div class="top-one">首页</div>
-    <router-link to="/about">Home</router-link>
+    <!-- <router-link to="/about">Home</router-link> -->
     <div class="top-two">
       <!-- 轮播图 -->
       <van-swipe class="my-swipe" :autoplay="3000" indicator-color="white">
@@ -221,8 +221,14 @@ header > div {
   /* margin-right: 10px; */
 
   height: 200px;
-  width: 750px;
-  margin: 38px;
+  width: 730px;
+  /* margin: 20px; */
+  /* background: rgb(0, 0, 0); */
+  display: flex;
+  flex-direction: row;
+     justify-content: center;
+            /* 水平摆放 ,水平居中还是居左*/
+            align-items: center;
 
 }
 
@@ -239,6 +245,9 @@ header > div {
   /* width: 48%; */
   height: 156px;
   float: left;
+  margin-left: 20px;
+  
+  
 
   background-image: url('../assets/header-left.png');
 
@@ -249,7 +258,7 @@ header > div {
   height: 30%;
   /* background: rgb(223, 169, 169); */
   /* margin-top: 35px; */
-  margin-left: 60px;
+  margin-left: 30px;
   margin-top: 40px;
   font-size: 30px;
 
@@ -259,17 +268,19 @@ header > div {
 .top-left-2 {
   height: 40%;
   /* background: rgb(255, 5, 5); */
-  margin-left: 60px;
+  margin-left: 30px;
   opacity: 0.5;
   font-size: 20px;
 
 }
 
 .top-three-right {
-  margin-left: 25px;
+  margin-left: 20px;
   width: 328px;
   /* width: 48%; */
   height: 156px;
+   
+  
 
   background-image: url('../assets/header-right.png');
 }
@@ -303,6 +314,7 @@ section {
   height: 100px;
   /* background: rgb(0, 0, 0); */
   float: left;
+  opacity: 0.5;
 }
 
 .section-bottom {

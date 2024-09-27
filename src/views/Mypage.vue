@@ -4,7 +4,9 @@
     <div class="header-bottom">
        
         <div class="header-bottom-1">
-            <div class="h-img"></div>
+            <div class="h-img">
+                <img src="../assets/h-img.png" alt="">
+            </div>
         </div>
         <div class="header-bottom-2">
             <div class="h-text1">爱喊巧克力的猫</div>
@@ -19,21 +21,36 @@
         <div class="s-1-1">
             <img src="../assets/形状 739.png" alt="" class="section-img">
         </div>
-         <div class="s-1-2">我的提交</div>
+        <div class="s-1-r">
+            <div class="s-1-2">我的提交</div>
+            <div class="s-1-3">></div>
+
+        </div>
+         
 
     </div>
     <div class="s-2">
          <div class="s-2-1">
             <img src="../assets/形状 163.png" alt="" class="section-img">
         </div>
-         <div class="s-2-2">账号管理</div>
+        <div class="s-2-r">
+            <div class="s-2-2">账号管理</div>
+            <div class="s-2-3">></div>
         
+
+        </div>
+         
     </div>
     <div class="s-3">
      <div class="s-3-1">
             <img src="../assets/形状 738.png" alt="" class="section-img">
         </div>
-         <div class="s-3-2">关于我们</div>
+        <div class="s-3-r">
+            <div class="s-3-2">关于我们</div>
+            <div class="s-3-3">></div>
+
+        </div>
+         
     </div>
     <div class="s-4"></div>
  
@@ -124,10 +141,10 @@ header{
             align-items: center;
 }
 .h-img{
-    height: 112px;
-    width: 112px;
+    height: 150px;
+    width: 150px;
     /* background: black; */
-    background-image: url('../assets/h-img.png');
+   
    
 
 }
@@ -150,8 +167,8 @@ header{
     
    height: 70px;
    width: 300px;
-   font-size:40px
-    /* background: rgb(229, 175, 175); */
+   font-size:40px;
+    /* background:rgb(229, 175, 175); */
    
    
 }
@@ -175,33 +192,59 @@ section{
      /* 上下摆放 */
      flex-direction: column;
      font-size: 40px;
+     margin-bottom: 10px;
+
     
 }
 .s-1{
     flex:1;
-     border-radius:80px  80px 0px 0;
+     border-radius:40px  40px 0px 0;
     background: rgb(255, 255, 255);
    
 
 }
+
 .s-1-1{
     width: 20%;
     height: 100%;
     /* background: bisque; */
     float: left;
+    /* border-bottom: 1px solid #333 ; */
 
+}
+.s-1-r{
+    width: 80%;
+    height: 100%;
+    /* background: bisque; */
+    float: left;
+    border-bottom: 1px solid #333 ;;
+    
 }
 .section-img{
     height: 60px;
     width: 60px;
     margin: 50px;
+    
 }
 .s-1-2{
-    width:80%;
+    width:50%;
     height: 100%;
     /* background: rgb(178, 110, 26); */
     float: left;
-    margin-top:40px;
+    margin-top:50px;
+    
+}
+.s-1-3{
+     width:30%;
+    height: 100%;
+    /* background: rgb(178, 110, 26); */
+    float: left;
+    margin-top:50px;
+    margin-left: 70px;
+    text-align: right;
+    opacity: 0.5;
+    /* background: black; */
+
 }
 
 .s-2{
@@ -217,12 +260,32 @@ section{
     float: left;
 
 }
+.s-2-r{
+    width: 80%;
+    height: 100%;
+    /* background: bisque; */
+    float: left;
+    border-bottom: 1px solid #333 ;;
+    
+}
 .s-2-2{
-    width:80%;
+    width:50%;
     height: 100%;
     /* background: rgb(178, 110, 26); */
     float: left;
-    margin-top:40px;
+    margin-top:50px;
+}
+.s-2-3{
+     width:30%;
+    height: 100%;
+    /* background: rgb(178, 110, 26); */
+    float: left;
+    margin-top:50px;
+    margin-left: 70px;
+    text-align: right;
+    opacity: 0.5;
+    /* background: black; */
+
 }
 .s-3{
     flex:1;
@@ -237,12 +300,33 @@ section{
     float: left;
 
 }
+.s-3-r{
+    width: 80%;
+    height: 100%;
+    /* background: bisque; */
+    float: left;
+    border-bottom: 1px solid #333 ;;
+    
+}
 .s-3-2{
-    width:80%;
+    width:50%;
     height: 100%;
     /* background: rgb(178, 110, 26); */
     float: left;
-    margin-top:40px;
+    margin-top:50px;
+}
+.s-3-3{
+     width:30%;
+    height: 100%;
+    /* background: rgb(178, 110, 26); */
+    float: left;
+    margin-top:50px;
+    margin-left: 70px;
+    text-align: right;
+    opacity: 0.5;
+    /* background: black; */
+    
+
 }
 .s-4{
     flex:7;
