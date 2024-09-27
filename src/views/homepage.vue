@@ -100,25 +100,20 @@
       </div>
     </div>
   </section>
-  <footer>
-    <!-- <div class="footer-img">
-
-    </div>
-    <div class="footer-img">
-    <img src="../assets/1.jpg" alt="" class="top-img"> -->
-
-        <!-- </div> --> -->
+ 
 <!-- 底部标签 -->
-       <van-tabbar v-model="active">
-  <van-tabbar-item icon="home-o">标签</van-tabbar-item>
-  <van-tabbar-item icon="search">标签</van-tabbar-item>
-  <van-tabbar-item icon="friends-o">标签</van-tabbar-item>
-  <van-tabbar-item icon="setting-o">标签</van-tabbar-item>
+<router-view />
+
+  <van-tabbar v-model="active" route>
+  <van-tabbar-item  replace to="/homepage" icon="home-o" >首页</van-tabbar-item>
+
+  <van-tabbar-item replace to="/Mypage" icon="friends-o">我的</van-tabbar-item>
+
 </van-tabbar>
+<footer></footer>
 
 
-  </footer>
-  <footer></footer>
+
 
 
 </template>
@@ -138,7 +133,8 @@ const active = ref(0)
 * {
   margin: 0;
   padding: 0;
-  /* height: 1624px;*/
+  
+ 
 }
 
 a {
@@ -152,11 +148,12 @@ ul {
 
 header, section, footer {
 
-  margin: 0 auto;
-  /* background-color: rgb(152, 31, 216); */
+    width: 750px;
+    margin: 0 auto;
+    /* background-color: rgb(152, 31, 216); */
 }
 
-header, footer {
+header {
   height: 80px;
 }
 
@@ -183,6 +180,7 @@ header > div {
   color: rgb(255, 255, 255);
   font-size: 50px;
   text-align: center;
+  
   height: 80px;
 
 }
@@ -199,7 +197,7 @@ header > div {
 .my-swipe .van-swipe-item {
   color: #fff;
   font-size: 20px;
-  line-height: 150px;
+  /* line-height: 150px; */
   text-align: center;
   /* background-color: #39a9ed; */
 }
@@ -230,6 +228,7 @@ header > div {
 
 .top-three > div {
   float: left;
+  /* 页面背景不重复 */
   background-repeat: no-repeat;
 
 
@@ -239,6 +238,7 @@ header > div {
   width: 328px;
   /* width: 48%; */
   height: 156px;
+  float: left;
 
   background-image: url('../assets/header-left.png');
 
@@ -275,18 +275,17 @@ header > div {
 }
 
 section {
-  height: 900px;
-  width: 100%;
+  /* height: 900px;
+  width: 100%; */
 
 }
 
 .section-top {
   width: 700px;
-  height: 100px;
+  height: 80px;
   font-size: 30px;
   /* text-align: left; */
   /* background-color: rgb(223, 170, 170); */
-
   margin-left: 40px;
   float: left;
 }
@@ -309,7 +308,10 @@ section {
 .section-bottom {
   width: 750px;
   height: 820px;
-  background-color: rgb(255, 255, 255);
+  /* background-color: rgb(109, 30, 30); */
+  float: left;
+   
+
 
   /* 居中 */
 
@@ -329,6 +331,7 @@ section {
   width: 750px;
   height: 180px;
   margin-bottom: 20px;
+  
   background-color: rgb(255, 255, 255);
 
 }
@@ -339,7 +342,7 @@ section {
   height: 100px; */
   /* background-color: rgb(216, 171, 171); */
   margin-right: 20px;
-
+ 
 }
 
 .section-img {
@@ -457,10 +460,10 @@ section {
 }
 
 footer {
-  float: left;
+  /* float: left;
   background: blueviolet;
   height: 100px;
-  width: 750px;
+  width: 750px; */
 
 }
 
