@@ -29,8 +29,7 @@
   required
   
   label="省份" 
-  label-width="200px" 
-  input-width="200px"  
+  
   
   placeholder="请选择所在省份"
   @click="showPicker = true"
@@ -149,9 +148,9 @@ const active = ref(0);
 //       showPicker.value = false;
 //     };
     //文件上传
-    const value = ref([
-      { url: 'https://fastly.jsdelivr.net/npm/@vant/assets/leaf.jpeg' },
-    ]);
+    // const value = ref([
+    //   { url: 'https://fastly.jsdelivr.net/npm/@vant/assets/leaf.jpeg' },
+    // ]);
     //具体地点选择
     const result = ref('');
     const showArea = ref(false);
@@ -172,12 +171,7 @@ const active = ref(0);
     
    
 }
-/* .home{
-    
-    background-repeat: no-repeat;
-    background-image:url('../assets/header.png') ;
-   
-} */
+
 a{
     text-decoration: none;
 

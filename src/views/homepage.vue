@@ -35,7 +35,7 @@
       </div>
       <div class="top-three-right">
         <div class="top-left-1">
-          信息采集
+           <router-link to="/Information-1" >信息采集</router-link>
 
         </div>
         <div class="top-left-2">
@@ -136,6 +136,7 @@ const active = ref(0)
   
  
 }
+
 
 a {
   text-decoration: none;
