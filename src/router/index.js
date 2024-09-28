@@ -33,7 +33,13 @@ const routes = [
     path:'/Mypage',
     name:'Mypage',
     component:()=>import('../views/Mypage.vue'),
-  }
+  },
+  {
+  path: '/Information-1',
+  name: 'Information-1',
+  component:()=>import('../views/Information-1.vue'),
+}
+
 ]
 
 const router = createRouter({
