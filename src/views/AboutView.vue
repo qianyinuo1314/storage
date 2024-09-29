@@ -76,6 +76,8 @@
   />
 </van-popup>
   </div>
+  <van-uploader v-model="fileList" multiple />
+
   <div></div>
 </template>
 
@@ -92,6 +94,8 @@
 <script setup>
 import {ref} from 'vue';
 import { areaList } from '@vant/area-data';
+import { Uploader } from 'vant';
+
 
 const active = ref(0);
 
@@ -114,6 +118,12 @@ const result = ref('');
       showArea.value = false;
       result.value = selectedOptions.map((item) => item.text).join('/');
     };
+    const fileList = ref([
+      { url: 'https://fastly.jsdelivr.net/npm/@vant/assets/leaf.jpeg' },
+      // Uploader 根据文件后缀来判断是否为图片文件
+      // 如果图片 URL 中不包含类型信息，可以添加 isImage 标记来声明
+      { url: 'https://cloud-image', isImage: true },
+    ]);
     
 
 

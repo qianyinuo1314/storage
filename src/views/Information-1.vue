@@ -104,7 +104,7 @@
         <div class="s-7" >
             <van-field  required name="uploader" label="电站图片" label-align="top" class="custom-field-font">
   <template #input>
-    <van-uploader v-model="value" />
+    <van-uploader v-model="fileList" multiple />
   </template>
 </van-field>
 
@@ -147,10 +147,7 @@ const active = ref(0);
 //       result.value = selectedOptions[0]?.text;
 //       showPicker.value = false;
 //     };
-    //文件上传
-    // const value = ref([
-    //   { url: 'https://fastly.jsdelivr.net/npm/@vant/assets/leaf.jpeg' },
-    // ]);
+    
     //具体地点选择
     const result = ref('');
     const showArea = ref(false);
@@ -158,6 +155,13 @@ const active = ref(0);
       showArea.value = false;
       result.value = selectedOptions.map((item) => item.text).join('/');
     };
+    //文件上传
+     const fileList = ref([
+      { url: 'https://fastly.jsdelivr.net/npm/@vant/assets/leaf.jpeg' },
+      // Uploader 根据文件后缀来判断是否为图片文件
+      // 如果图片 URL 中不包含类型信息，可以添加 isImage 标记来声明
+      { url: 'https://cloud-image', isImage: true },
+    ]);
 
 
     
