@@ -1,29 +1,35 @@
 <template>
-<div class="home">
-  <header>
-    <div class="header-top">
-        <div class="top-left"> 
-           <router-link to="/homepage"  >
-          < </router-link>
-            </div>
-        <div class="top-right">信息采集</div>
-    </div>
-    <div class="header-bottom">
-<van-progress :percentage="12.5" 
+<div class="sss">
+
+
+     <header>
+     <div class="h-1"> 
+        <van-row gutter="50">
+  <van-col span="8">
+    <a href="javascript:history.back()"><van-icon name="arrow-left" /></a>
+    </van-col>
+ 
+  <van-col span="16">信息采集</van-col>
+</van-row>
+
+</div> 
+
+  
+     </header>   
+     <section>
+        <div class="h-2">
+
+    <!-- <van-progress :percentage="50" /> -->
+
+  
+   <van-progress :percentage="25" 
 stroke-width="8" 
 color="#fff" 
  :show-pivot="false"
   track-color="#855E4230 " />
-
-    </div>
-     <section>
-       
-        <div class="s-1">
-            
-                <div class="s-1-left">基本情况</div>
-                <div class="s-1-right">基本情况信息必填</div>
-            
-        </div>
+</div>
+     <div class="s-1">
+        <div class="s-1-1"> 当前状况</div>
         <div class="s-2">
             <!-- 选择省份 -->
             <van-form @submit="onSubmit"  >
@@ -101,31 +107,29 @@ color="#fff"
 
 </van-cell-group>
  <div style="margin: 16px;">
-    <van-button round block type="primary" native-type="submit" 
+    
+    <van-button round block type="primary" native-type="submit"  
    >
       下一步
     </van-button>
+    
   </div>
 </van-form>
 
         </div>
-   
-        <div class="s-3">
-            
-            <van-button type="primary" to="Information-2" class="s-8-1">下一步</van-button>
+       
+       
 
-
-        </div>
-        <div class="s-4"></div>
-      
+     </div>
+     
+    
+     
      </section>
-
-  </header>
- 
-  <footer></footer>
-</div>
-  
+     </div>
+     <div></div>
+     
 </template>
+src
 <script setup>
 import {ref} from 'vue';
 
@@ -133,27 +137,7 @@ import { Uploader } from 'vant';
 import { areaList } from '@vant/area-data';
 import { Progress } from 'vant';
 
-const active = ref(0);
-
-//  选择省份
-//  const result = ref('');
-//     const showPicker = ref(false);
-//     const columns = [
-//       { text: '湖南省', value: 'Hangzhou' },
-//       { text: '湖北省', value: 'Ningbo' },
-//       { text: '广东省', value: 'Wenzhou' },
-//       { text: '海南省', value: 'Shaoxing' },
-//       { text: '四川省', value: 'Huzhou' },
-//       { text: '贵州省', value: 'Huzhou' },
-//       { text: '浙江省', value: 'Huzhou' },
-//       { text: '安徽省', value: 'Huzhou' },
-      
-//       ];
-//       const onConfirm = ({ selectedOptions }) => {
-//       result.value = selectedOptions[0]?.text;
-//       showPicker.value = false;
-//     };
-    
+const active = ref(0); 
     //具体地点选择
     const result = ref('');
     const showArea = ref(false);
@@ -174,19 +158,18 @@ const active = ref(0);
     const password = ref('');
     const onSubmit = (values) => {
       console.log('submit', values);
-      URL:"http://localhost:8081/#/about"
+      
     };
 
-
-    
-
-
+     
 </script>
-<style scoped>
+<style scoped >
 *{
     margin: 0;
     padding: 0;
-   
+    /* background-image:url('../assets/header.png') ; */
+    background-size:  100% 100px;
+    background-repeat: no-repeat;
    
 }
 
@@ -198,138 +181,69 @@ a{
 ul{
     list-style: none;
 }
-header, section, footer {
-
-    /* width: 750px; */
-    margin: 0 auto;
-    /* background-color: rgb(152, 31, 216); */
-    /* background: blue; */
-     
+.sss{
+background-image:url('../assets/header.png') ;
+    background-size:  100% 250px;
+    background-repeat: no-repeat;
 }
 header{
-    width: 750px;
-    height: 521px;
-    background-repeat: no-repeat;
-    background-image:url('../assets/header.png') ;
-    background-size: contain;
-
-}
-.header-top{
-float: left;
-width: 750px;
-height: 150px;
-/* background: rgb(227, 134, 134); */
-}
-.top-left{
-width: 100px;
-height: 50px;
-/* background: rgb(214, 6, 6); */
-color:rgb(255, 255, 255);
-float: left;
-text-align: center;
-margin-top: 50px;
-font-size: 50px;
-
-}
-.top-right{
-/* width: 100%; */
-height: 150px;
-/* background: rgb(0, 0, 0); */
-color:rgb(255, 255, 255);
-text-align: center;
- display: flex;
-align-items: center;
-justify-content: center;
-font-size: 40px;
-margin-right: 100px;
-
-
-
-}
-
-.header-bottom{
-width: 750px;
-height: 100px;
-/* background: green; */
-float: left;
-}
-
-section{
-    width: 690px;
-    height: 1000px;
-    margin-left: 30px;
-    margin-right: 30px;
-    display: flex;
-    flex-direction: column;
-    background: white;
-    border-radius:20px  20px 0px 0;
-}
-section>div{
-    margin-left: 20px;
-     margin-right: 30px;
-}
-
-.s-1{
-    flex:1;
-    background: rgb(255, 255, 255);
-    margin-left:20px ;
+  
+    color: rgb(255, 255, 255);
     
-    
-
 }
-
-.s-1-left{
-   color: black; 
-   width: 60%;
-   height: 50%;
-   float: left;
-   font-size: 30px;
-   text-align: left;
-   margin-top: 20px;
-   /* background: rgb(71, 57, 21); */
-   float: left;
-    
-   
-
-}
-.s-1-right{
-    width: 40%;
+.h-1{
     height: 50%;
-   color: rgb(241, 131, 28); 
-   /* background: goldenrod; */
-   font-size: 20px;
-   text-align: right;
-   margin-top: 20px;
-   float: left;
+    padding-top:20px ;
+    padding-bottom:10px ;
+     margin-left: 20px;
+     font-size: 20px;
 
+}
+.h-2{
+    
+    height: 50%;
+    margin-left: 20px;
+    margin-right: 20px;
+    height: 40px;
+     padding-top: 15px;
+     padding-bottom: 15px;
+    background-image:url('../assets/header.png') ;
+    /* margin-bottom: 20px; */
+}
+section>div
+{
+    background: rgb(255, 255, 255);
+    
+    margin-left: 20px;
+    margin-right: 20px;
+    /* border-radius:10px  10px 0px 0; */
+   
+}
+.s-1{
+    
+     border-radius:10px  10px 0px 0;
+     height: 400px;
+}
 
+.s-1-1{
+   
+    background: rgb(255, 255, 255);
+     border-radius:10px  10px 0px 0;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    margin-left: 20px;
+    margin-bottom: 10px;
+     /* font-size: 13px; */
+}
+.s-1-2{
+    background: rgb(255, 255, 255);
+    margin-left: 20px;
+   
 }
 .s-2{
-    flex:3;
-    /* background: rebeccapurple;
-     */
+  margin-left: 15px;
 }
-.custom-field-font{
-font-size: 10px;
+.vvv{
+ font-size: 10px;
 }
-.s-3{
-    flex:2;
-     /* background: rgb(3, 2, 5); */
-    
-}
-
-
-.s-3-1{
-    width: 100%;
-    height: 80px;
-    
-}
-/* .s-9{
-    flex:2
-} */
-
 </style>
-
-
-
-

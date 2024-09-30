@@ -140,7 +140,7 @@
 </van-form>
 
 </div>
-  <div></div>
+  <div><a href="javascript:history.back()">></a></div>
 </template>
 
 
@@ -162,25 +162,25 @@ import { Uploader } from 'vant';
 
 const active = ref(0);
 
-//
-//  const result = ref('');
-//     const showPicker = ref(false);
-//     const columns = [
-//       { text: '杭州', value: 'Hangzhou' },
-//       { text: '宁波', value: 'Ningbo' },
-//       { text: '温州', value: 'Wenzhou' },
-//       { text: '绍兴', value: 'Shaoxing' },
-//       { text: '湖州', value: 'Huzhou' },];
-//       const onConfirm = ({ selectedOptions }) => {
-//       result.value = selectedOptions[0]?.text;
-//       showPicker.value = false;
-//     };
-const result = ref('');
-    const showArea = ref(false);
-    const onConfirm = ({ selectedOptions }) => {
-      showArea.value = false;
-      result.value = selectedOptions.map((item) => item.text).join('/');
+
+ const result = ref('');
+    const showPicker = ref(false);
+    const columns = [
+      { text: '是', value: 'shi' },
+      { text: '宁波', value: 'Ningbo' },
+      { text: '温州', value: 'Wenzhou' },
+      { text: '绍兴', value: 'Shaoxing' },
+      { text: '湖州', value: 'Huzhou' },];
+      const onConfirm = ({ selectedOptions }) => {
+      result.value = selectedOptions[0]?.text;
+      showPicker.value = false;
     };
+// const result = ref('');
+//     const showArea = ref(false);
+//     const onConfirm = ({ selectedOptions }) => {
+//       showArea.value = false;
+//       result.value = selectedOptions.map((item) => item.text).join('/');
+//     };
     const fileList = ref([
       { url: 'https://fastly.jsdelivr.net/npm/@vant/assets/leaf.jpeg' },
       // Uploader 根据文件后缀来判断是否为图片文件
