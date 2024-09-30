@@ -1,249 +1,236 @@
 <template>
-<div class="sss">
-
-
-     <header>
-     <div class="h-1"> 
+  <div class="sss">
+    <header>
+      <div class="h-1">
         <van-row gutter="50">
-  <van-col span="8">
-    <a href="javascript:history.back()"><van-icon name="arrow-left" /></a>
-    </van-col>
- 
-  <van-col span="16">信息采集</van-col>
-</van-row>
-
-</div> 
-
-  
-     </header>   
-     <section>
-        <div class="h-2">
-
-    <!-- <van-progress :percentage="50" /> -->
-
-  
-   <van-progress :percentage="25" 
-stroke-width="8" 
-color="#fff" 
- :show-pivot="false"
-  track-color="#855E4230 " />
-</div>
-     <div class="s-1">
+          <van-col span="8">
+            <!--            <a href="javascript:history.back()">-->
+            <!--              <van-icon name="arrow-left"/>-->
+            <!--            </a>-->
+            <van-icon @click="router.back()" name="arrow-left"/>
+          </van-col>
+          <van-col span="16">信息采集</van-col>
+        </van-row>
+      </div>
+    </header>
+    <section>
+      <div class="h-2">
+        <!-- <van-progress :percentage="50" /> -->
+        <van-progress :percentage="25"
+                      stroke-width="8"
+                      color="#fff"
+                      :show-pivot="false"
+                      track-color="#855E4230 "/>
+      </div>
+      <div class="s-1">
         <div class="s-1-1"> 当前状况</div>
         <div class="s-2">
-            <!-- 选择省份 -->
-            <van-form @submit="onSubmit"  >
-            <van-cell-group inset >
-             <van-field class="custom-field-font"
-  required         
-  v-model="result"
-  is-link
-  readonly
- label-align="top"
-  name="area"
-  label="省份"
-  placeholder="请输入"
- 
-  @click="showArea = true"
-/>
-<van-popup v-model:show="showArea" position="bottom">
-  <van-area 
-    :area-list="areaList"
-  
-    :columns-num="1"
-    @confirm="onConfirm"
-    @cancel="showArea = false"
-  />
-</van-popup>
- <van-field class="custom-field-font"
-   
-    v-model="name"
-    name="项目名称"
-    required
-    label="项目名称"
-    placeholder="请输入项目名称"
-    label-align="top"
-    :rules="[{ required: true, message: '请输入' }]"
-  />
-   <van-field class="custom-field-font"
-    v-model="daima"
-    name="项目代码"
-    required
-    label="项目代码"
-    placeholder="请输入项目代码"
-    label-align="top"
-     :rules="[{ required: true, message: '请输入' }]"
-  />
-  <van-field class="custom-field-font"
-    v-model="location"
-    name="建设地点"
-    required
-    label="建设地点"
-    placeholder="请选择建设地点"
-    label-align="top"
-     :rules="[{ required: true, message: '请输入' }]"
-  />
-  <van-field class="custom-field-font"
-    v-model="address"
-    name="具体地址"
-    required
-    label="具体地址"
-    placeholder="请输入具体地址"
-    label-align="top"
-     :rules="[{ required: true, message: '请输入' }]"
-  />
-  <van-field  class="custom-field-font"
-   v-model="photo"
-  required 
-  name="uploader" 
-  label="电站图片" 
-  label-align="top" 
-  :rules="[{ required: true, message: '请输入' }]"
-  >
-  <template #input>
-    <van-uploader v-model="fileList" multiple />
-  </template>
-</van-field>
-
-</van-cell-group>
- <div style="margin: 16px;">
-    
-    <van-button round block type="primary" native-type="submit"  
-   >
-      下一步
-    </van-button>
-    
-  </div>
-</van-form>
-
+          <!-- 选择省份 -->
+          <van-form @submit="onSubmit">
+            <van-cell-group inset>
+              <van-field class="custom-field-font"
+                         required
+                         v-model="form.result"
+                         is-link
+                         readonly
+                         label-align="top"
+                         name="area"
+                         label="省份"
+                         placeholder="请输入"
+                         @click="showArea = true"
+              />
+              <van-popup v-model:show="showArea" position="bottom">
+                <van-area
+                    :area-list="areaList"
+                    :columns-num="1"
+                    @confirm="onConfirm"
+                    @cancel="showArea = false"
+                />
+              </van-popup>
+              <van-field class="custom-field-font"
+                         v-model="form.name"
+                         name="项目名称"
+                         required
+                         label="项目名称"
+                         placeholder="请输入项目名称"
+                         label-align="top"
+                         :rules="[{ required: true, message: '请输入' }]"
+              />
+              <van-field class="custom-field-font"
+                         v-model="form.daima"
+                         name="项目代码"
+                         required
+                         label="项目代码"
+                         placeholder="请输入项目代码"
+                         label-align="top"
+                         :rules="[{ required: true, message: '请输入' }]"
+              />
+              <van-field class="custom-field-font"
+                         v-model="form.location"
+                         name="建设地点"
+                         required
+                         label="建设地点"
+                         placeholder="请选择建设地点"
+                         label-align="top"
+                         :rules="[{ required: true, message: '请输入' }]"
+              />
+              <van-field class="custom-field-font"
+                         v-model="form.address"
+                         name="具体地址"
+                         required
+                         label="具体地址"
+                         placeholder="请输入具体地址"
+                         label-align="top"
+                         :rules="[{ required: true, message: '请输入' }]"
+              />
+              <van-field class="custom-field-font"
+                         v-model="form.photo"
+                         required
+                         name="uploader"
+                         label="电站图片"
+                         label-align="top"
+                         :rules="[{ required: true, message: '请输入' }]"
+              >
+                <template #input>
+                  <van-uploader v-model="fileList" multiple/>
+                </template>
+              </van-field>
+            </van-cell-group>
+            <div style="margin: 16px;">
+              <van-button round block type="primary" native-type="submit">
+                下一步
+              </van-button>
+            </div>
+          </van-form>
         </div>
-       
-       
+      </div>
+    </section>
+  </div>
+  <div></div>
 
-     </div>
-     
-    
-     
-     </section>
-     </div>
-     <div></div>
-     
 </template>
 src
 <script setup>
 import {ref} from 'vue';
 
-import { Uploader } from 'vant';
-import { areaList } from '@vant/area-data';
-import { Progress } from 'vant';
+import {Uploader} from 'vant';
+import {areaList} from '@vant/area-data';
+import {Progress} from 'vant';
+import router from "@/router";
 
-const active = ref(0); 
-    //具体地点选择
-    const result = ref('');
-    const showArea = ref(false);
-    const onConfirm = ({ selectedOptions }) => {
-      showArea.value = false;
-      result.value = selectedOptions.map((item) => item.text).join('/');
-    };
-    //文件上传
-     const fileList = ref([
- 
-    ]);
-    //表单验证基础用法
-    const name = ref('');
-    const daima = ref('');
-    const location = ref('');
-    const address = ref('');
-    const photo = ref('');
-    const password = ref('');
-    const onSubmit = (values) => {
-      console.log('submit', values);
-      
-    };
+const active = ref(0);
+const showArea = ref(false);
+//文件上传
+const fileList = ref([]);
+const form = ref({
+  result: '',
+  name: '',
+  daima: '',
+  location: '',
+  address: '',
+  photo: '',
+  password: '',
+})
+const onConfirm = ({selectedOptions}) => {
+  showArea.value = false;
+  form.value.result = selectedOptions.map((item) => item.text).join('/');
+};
+const onSubmit = () => {
+  router.push('/Information-2')
+};
 
-     
+
 </script>
-<style scoped >
-*{
-    margin: 0;
-    padding: 0;
-    /* background-image:url('../assets/header.png') ; */
-    background-size:  100% 100px;
-    background-repeat: no-repeat;
-   
-}
-
-a{
-    text-decoration: none;
-    color: rgb(255, 255, 255);
+<style scoped>
+* {
+  margin: 0;
+  padding: 0;
+  /* background-image:url('../assets/header.png') ; */
+  background-size: 100% 100px;
+  background-repeat: no-repeat;
 
 }
-ul{
-    list-style: none;
-}
-.sss{
-background-image:url('../assets/header.png') ;
-    background-size:  100% 250px;
-    background-repeat: no-repeat;
-}
-header{
-  
-    color: rgb(255, 255, 255);
-    
-}
-.h-1{
-    height: 50%;
-    padding-top:20px ;
-    padding-bottom:10px ;
-     margin-left: 20px;
-     font-size: 20px;
+
+a {
+  text-decoration: none;
+  color: rgb(255, 255, 255);
 
 }
-.h-2{
-    
-    height: 50%;
-    margin-left: 20px;
-    margin-right: 20px;
-    height: 40px;
-     padding-top: 15px;
-     padding-bottom: 15px;
-    background-image:url('../assets/header.png') ;
-    /* margin-bottom: 20px; */
-}
-section>div
-{
-    background: rgb(255, 255, 255);
-    
-    margin-left: 20px;
-    margin-right: 20px;
-    /* border-radius:10px  10px 0px 0; */
-   
-}
-.s-1{
-    
-     border-radius:10px  10px 0px 0;
-     height: 400px;
+
+ul {
+  list-style: none;
 }
 
-.s-1-1{
-   
-    background: rgb(255, 255, 255);
-     border-radius:10px  10px 0px 0;
-    padding-top: 10px;
-    padding-bottom: 10px;
-    margin-left: 20px;
-    margin-bottom: 10px;
-     /* font-size: 13px; */
+.sss {
+  background-image: url('../assets/header.png');
+  background-size: 100% 250px;
+  background-repeat: no-repeat;
 }
-.s-1-2{
-    background: rgb(255, 255, 255);
-    margin-left: 20px;
-   
+
+header {
+
+  color: rgb(255, 255, 255);
+
 }
-.s-2{
+
+.h-1 {
+  height: 50%;
+  padding-top: 20px;
+  padding-bottom: 10px;
+  margin-left: 20px;
+  font-size: 20px;
+
+}
+
+.h-2 {
+
+  height: 50%;
+  margin-left: 20px;
+  margin-right: 20px;
+  height: 40px;
+  padding-top: 15px;
+  padding-bottom: 15px;
+  background-image: url('../assets/header.png');
+  /* margin-bottom: 20px; */
+}
+
+section > div {
+  background: rgb(255, 255, 255);
+
+  margin-left: 20px;
+  margin-right: 20px;
+  /* border-radius:10px  10px 0px 0; */
+
+}
+
+.s-1 {
+
+  border-radius: 10px 10px 0px 0;
+  height: 400px;
+}
+
+.s-1-1 {
+
+  background: rgb(255, 255, 255);
+  border-radius: 10px 10px 0px 0;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  margin-left: 20px;
+  margin-bottom: 10px;
+  /* font-size: 13px; */
+}
+
+.s-1-2 {
+  background: rgb(255, 255, 255);
+  margin-left: 20px;
+
+}
+
+.s-2 {
   margin-left: 15px;
 }
-.vvv{
- font-size: 10px;
+
+.vvv {
+  font-size: 10px;
 }
 </style>
