@@ -22,6 +22,7 @@
     </div>
     <div class="top-three">  <!--  两个模块-->
       <div class="top-three-left">
+        <router-link to="/Information-1" >
         <div class="top-left-1">
           统计分析
 
@@ -30,19 +31,26 @@
 
           查看详情
         </div>
+         </router-link>
 
 
       </div>
       <div class="top-three-right">
+      <router-link to="/Information-1"  >
+      
+        
         <div class="top-left-1">
-           <router-link to="/Information-1" >信息采集</router-link>
+          信息采集
 
         </div>
         <div class="top-left-2">
 
           填写信息
         </div>
+     
+      </router-link>
       </div>
+      
     </div>
   </header>
   <section>
@@ -102,7 +110,9 @@
   </section>
  
 <!-- 底部标签 -->
-<router-view />
+
+<footer>
+  <router-view />
 
   <van-tabbar v-model="active" route>
   <van-tabbar-item  replace to="/homepage" icon="home-o" >首页</van-tabbar-item>
@@ -110,7 +120,7 @@
   <van-tabbar-item replace to="/Mypage" icon="friends-o">我的</van-tabbar-item>
 
 </van-tabbar>
-<footer></footer>
+</footer>
 
 
 
@@ -140,6 +150,11 @@ const active = ref(0)
 
 a {
   text-decoration: none;
+  
+    color: rgb(0, 0, 0);
+    text-decoration: none; 
+
+  
 
 }
 
@@ -256,11 +271,11 @@ header > div {
 }
 
 .top-left-1 {
-  height: 30%;
+  height: 40%;
   /* background: rgb(223, 169, 169); */
   /* margin-top: 35px; */
   margin-left: 30px;
-  margin-top: 40px;
+  margin-top: 30px;
   font-size: 30px;
 
 
@@ -285,6 +300,8 @@ header > div {
 
   background-image: url('../assets/header-right.png');
 }
+
+
 
 section {
   /* height: 900px;
@@ -320,7 +337,7 @@ section {
 
 .section-bottom {
   width: 750px;
-  height: 820px;
+  height: 840px;
   /* background-color: rgb(109, 30, 30); */
   float: left;
    
@@ -334,8 +351,9 @@ section {
 .section-bottom > div {
   float: left;
   height: 100px;
-  background-color: azure;
+  /* background-color: azure; */
   margin-bottom: 20px;
+  
 
 }
 
@@ -344,8 +362,7 @@ section {
   width: 750px;
   height: 180px;
   margin-bottom: 20px;
-  
-  background-color: rgb(255, 255, 255);
+
 
 }
 
@@ -379,7 +396,7 @@ section {
   /* background-color: rgb(99, 25, 25); */
   color: rgb(0, 0, 0);
   font-size: 30px;
-  /* text-align: left; */
+ 
 
 }
 
@@ -392,7 +409,10 @@ section {
 .r-2 {
   /* 透明度 */
   opacity: 0.5;
-  height: 50%;
+  /* height: 50%; */
+  margin-top:50px;
+   vertical-align: bottom;
+   
   /* background: rgb(0, 255, 34); */
 }
 
@@ -400,6 +420,7 @@ section {
   float: left;
   /* background-color: rgb(255, 255, 255); */
   margin-right: 20px;
+  
 
 
 }
@@ -418,6 +439,8 @@ section {
   /* background-color: rgb(99, 25, 25); */
   color: rgb(0, 0, 0);
   font-size: 30px;
+ 
+  /* background: rgb(51, 24, 24); */
   /* text-align: left; */
 
 }
@@ -426,6 +449,7 @@ section {
   float: left;
   /* background-color: rgb(255, 255, 255); */
   margin-right: 20px;
+  
 
 }
 
@@ -452,6 +476,7 @@ section {
 
   margin-right: 20px;
 
+
 }
 
 .b4-left {
@@ -468,6 +493,7 @@ section {
   /* background-color: rgb(99, 25, 25); */
   color: rgb(0, 0, 0);
   font-size: 30px;
+  margin-bottom: 20px;
   /* text-align: left; */
 
 }

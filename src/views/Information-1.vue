@@ -2,10 +2,18 @@
 <div class="home">
   <header>
     <div class="header-top">
-        <div class="top-left"> <</div>
+        <div class="top-left"> 
+           <router-link to="/homepage"  >
+          < </router-link>
+            </div>
         <div class="top-right">信息采集</div>
     </div>
     <div class="header-bottom">
+<van-progress :percentage="12.5" 
+stroke-width="8" 
+color="#fff" 
+ :show-pivot="false"
+  track-color="#855E4230 " />
 
     </div>
      <section>
@@ -18,105 +26,97 @@
         </div>
         <div class="s-2">
             <!-- 选择省份 -->
-          
-
-<van-field class="custom-field-font"
-  v-model="result"
-  is-link
-  readonly
-  name="picker"
-  label-align="top"
-  required
-  
-  label="省份" 
-  
-  
-  placeholder="请选择所在省份"
-  @click="showPicker = true"
-/>
-<van-popup v-model:show="showPicker" position="bottom">
-  <van-picker
-    :columns="columns"
-    @confirm="onConfirm"
-    @cancel="showPicker = false"
-  />
-</van-popup>
-        </div>
-        <div class="s-3">
-        
+            <van-form @submit="onSubmit"  >
             <van-cell-group inset >
-   <van-field class="custom-field-font"
-    v-model="value"
-    
-    required
-    label="项目名称"
-    placeholder="请输入项目名称"
-    label-align="top"
-  />
-</van-cell-group>
-        </div>
-        <div class="s-4">
-                    <van-cell-group inset >
-   <van-field class="custom-field-font"
-    v-model="value"
-    
-    required
-    label="项目代码"
-    placeholder="请输入项目代码"
-    label-align="top"
-  />
-</van-cell-group>
-        </div>
-        <div class="s-5">
-            <van-cell-group inset >
-   <van-field class="custom-field-font"
-    v-model="value"
-    
-    required
-    label="建设地点"
-    placeholder="请选择建设地点"
-    label-align="top"
-  />
-</van-cell-group>
-
-        </div>
-        <div class="s-6">
-            <van-field class="custom-field-font"
+             <van-field class="custom-field-font"
   required         
   v-model="result"
   is-link
   readonly
+ label-align="top"
   name="area"
-  label="具体地址"
+  label="省份"
   placeholder="请输入"
+ 
   @click="showArea = true"
 />
 <van-popup v-model:show="showArea" position="bottom">
-  <van-area
+  <van-area 
     :area-list="areaList"
+  
+    :columns-num="1"
     @confirm="onConfirm"
     @cancel="showArea = false"
   />
 </van-popup>
-
-
-        </div>
-        <div class="s-7" >
-            <van-field  required name="uploader" label="电站图片" label-align="top" class="custom-field-font">
+ <van-field class="custom-field-font"
+   
+    v-model="name"
+    name="项目名称"
+    required
+    label="项目名称"
+    placeholder="请输入项目名称"
+    label-align="top"
+    :rules="[{ required: true, message: '请输入' }]"
+  />
+   <van-field class="custom-field-font"
+    v-model="daima"
+    name="项目代码"
+    required
+    label="项目代码"
+    placeholder="请输入项目代码"
+    label-align="top"
+     :rules="[{ required: true, message: '请输入' }]"
+  />
+  <van-field class="custom-field-font"
+    v-model="location"
+    name="建设地点"
+    required
+    label="建设地点"
+    placeholder="请选择建设地点"
+    label-align="top"
+     :rules="[{ required: true, message: '请输入' }]"
+  />
+  <van-field class="custom-field-font"
+    v-model="address"
+    name="具体地址"
+    required
+    label="具体地址"
+    placeholder="请输入具体地址"
+    label-align="top"
+     :rules="[{ required: true, message: '请输入' }]"
+  />
+  <van-field  class="custom-field-font"
+   v-model="photo"
+  required 
+  name="uploader" 
+  label="电站图片" 
+  label-align="top" 
+  :rules="[{ required: true, message: '请输入' }]"
+  >
   <template #input>
     <van-uploader v-model="fileList" multiple />
   </template>
 </van-field>
 
+</van-cell-group>
+ <div style="margin: 16px;">
+    <van-button round block type="primary" native-type="submit" 
+   >
+      下一步
+    </van-button>
+  </div>
+</van-form>
 
         </div>
-        <div class="s-8">
+   
+        <div class="s-3">
             
-            <van-button type="primary" to="index" class="s-8-1">下一步</van-button>
+            <van-button type="primary" to="Information-2" class="s-8-1">下一步</van-button>
 
 
         </div>
-        <div class="s-9"></div>
+        <div class="s-4"></div>
       
      </section>
 
@@ -131,6 +131,7 @@ import {ref} from 'vue';
 
 import { Uploader } from 'vant';
 import { areaList } from '@vant/area-data';
+import { Progress } from 'vant';
 
 const active = ref(0);
 
@@ -138,11 +139,16 @@ const active = ref(0);
 //  const result = ref('');
 //     const showPicker = ref(false);
 //     const columns = [
-//       { text: '杭州', value: 'Hangzhou' },
-//       { text: '宁波', value: 'Ningbo' },
-//       { text: '温州', value: 'Wenzhou' },
-//       { text: '绍兴', value: 'Shaoxing' },
-//       { text: '湖州', value: 'Huzhou' },];
+//       { text: '湖南省', value: 'Hangzhou' },
+//       { text: '湖北省', value: 'Ningbo' },
+//       { text: '广东省', value: 'Wenzhou' },
+//       { text: '海南省', value: 'Shaoxing' },
+//       { text: '四川省', value: 'Huzhou' },
+//       { text: '贵州省', value: 'Huzhou' },
+//       { text: '浙江省', value: 'Huzhou' },
+//       { text: '安徽省', value: 'Huzhou' },
+      
+//       ];
 //       const onConfirm = ({ selectedOptions }) => {
 //       result.value = selectedOptions[0]?.text;
 //       showPicker.value = false;
@@ -157,11 +163,19 @@ const active = ref(0);
     };
     //文件上传
      const fileList = ref([
-      { url: 'https://fastly.jsdelivr.net/npm/@vant/assets/leaf.jpeg' },
-      // Uploader 根据文件后缀来判断是否为图片文件
-      // 如果图片 URL 中不包含类型信息，可以添加 isImage 标记来声明
-      { url: 'https://cloud-image', isImage: true },
+ 
     ]);
+    //表单验证基础用法
+    const name = ref('');
+    const daima = ref('');
+    const location = ref('');
+    const address = ref('');
+    const photo = ref('');
+    const password = ref('');
+    const onSubmit = (values) => {
+      console.log('submit', values);
+      URL:"http://localhost:8081/#/about"
+    };
 
 
     
@@ -172,12 +186,13 @@ const active = ref(0);
 *{
     margin: 0;
     padding: 0;
-    
+   
    
 }
 
 a{
     text-decoration: none;
+    color: rgb(255, 255, 255);
 
 }
 ul{
@@ -185,7 +200,7 @@ ul{
 }
 header, section, footer {
 
-    width: 750px;
+    /* width: 750px; */
     margin: 0 auto;
     /* background-color: rgb(152, 31, 216); */
     /* background: blue; */
@@ -196,6 +211,7 @@ header{
     height: 521px;
     background-repeat: no-repeat;
     background-image:url('../assets/header.png') ;
+    background-size: contain;
 
 }
 .header-top{
@@ -289,39 +305,21 @@ section>div{
 
 }
 .s-2{
-    flex:1;
+    flex:3;
     /* background: rebeccapurple;
      */
 }
 .custom-field-font{
-font-size: 20px;
+font-size: 10px;
 }
 .s-3{
-    flex:1;
+    flex:2;
      /* background: rgb(3, 2, 5); */
     
 }
-.s-4{
-    flex:1;
-    
-}
-.s-5{
-    flex:1;
-    
-}
-.s-6{
-    flex:1;
-    
-}
-.s-7{
-    flex:1;
-    
-}
-.s-8{
-    flex:1;
-   
-}
-.s-8-1{
+
+
+.s-3-1{
     width: 100%;
     height: 80px;
     
