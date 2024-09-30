@@ -2,18 +2,24 @@
   <div class="sss">
     <header>
       <div class="h-1">
-        <van-row gutter="50">
-          <van-col span="8">
+        <!-- <van-row gutter="50">
+          <van-col span="8"> -->
             <!--            <a href="javascript:history.back()">-->
             <!--              <van-icon name="arrow-left"/>-->
             <!--            </a>-->
-            <van-icon @click="router.back()" name="arrow-left"/>
+            <!-- 返回上一层页面 -->
+            <!-- <van-icon @click="router.back()" name="arrow-left"/>
           </van-col>
           <van-col span="16">信息采集</van-col>
-        </van-row>
+        </van-row> -->
+        <van-nav-bar
+         title="信息采集"
+         left-text=""
+         left-arrow
+         @click-left="onClickLeft"
+         />
+
       </div>
-    </header>
-    <section>
       <div class="h-2">
         <!-- <van-progress :percentage="50" /> -->
         <van-progress :percentage="25"
@@ -22,10 +28,14 @@
                       :show-pivot="false"
                       track-color="#855E4230 "/>
       </div>
+    </header>
+    <section>
+      
       <div class="s-1">
         <div class="s-1-1"> 当前状况</div>
         <div class="s-2">
           <!-- 选择省份 -->
+          
           <van-form @submit="onSubmit">
             <van-cell-group inset>
               <van-field class="custom-field-font"
@@ -56,7 +66,7 @@
                          label-align="top"
                          :rules="[{ required: true, message: '请输入' }]"
               />
-              <van-field class="custom-field-font"
+              <van-field class="custom-field-font" 
                          v-model="form.daima"
                          name="项目代码"
                          required
@@ -96,16 +106,23 @@
                 </template>
               </van-field>
             </van-cell-group>
-            <div style="margin: 16px;">
+            <!-- <div style="margin: 16px;">
               <van-button round block type="primary" native-type="submit">
                 下一步
               </van-button>
-            </div>
+            </div> -->
           </van-form>
         </div>
       </div>
     </section>
   </div>
+  <footer>
+  <div style="margin: 16px;">
+              <van-button round block type="primary" native-type="submit">
+                下一步
+              </van-button>
+            </div>
+  </footer>
   <div></div>
 
 </template>
@@ -117,9 +134,10 @@ import {Uploader} from 'vant';
 import {areaList} from '@vant/area-data';
 import {Progress} from 'vant';
 import router from "@/router";
-
+import { ConfigProvider } from 'vant';
 const active = ref(0);
 const showArea = ref(false);
+const onClickLeft = () => history.back();
 //文件上传
 const fileList = ref([]);
 const form = ref({
@@ -136,12 +154,26 @@ const onConfirm = ({selectedOptions}) => {
   form.value.result = selectedOptions.map((item) => item.text).join('/');
 };
 const onSubmit = () => {
+  
   router.push('/Information-2')
 };
 
 
 </script>
 <style scoped>
+.van-nav-bar{
+  background-color: var(--van-nav-bar-background);
+   color: var(--van-nav-bar-icon-color);
+}
+:root {
+  --van-blue: rgb(74, 93, 237);
+  --van-green: #10fe08;
+  --van-white:#ffffff;
+  --van-nav-bar-background: var(--van-blue);
+  --van-nav-bar-icon-color:var(var(--van-white));
+ 
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -162,6 +194,7 @@ ul {
 }
 
 .sss {
+  background-color: transparent;
   background-image: url('../assets/header.png');
   background-size: 100% 250px;
   background-repeat: no-repeat;
@@ -182,6 +215,19 @@ header {
 
 }
 
+
+section{
+ 
+}
+
+section > div {
+ 
+
+  margin-left: 20px;
+  margin-right: 20px;
+  /* border-radius:10px  10px 0px 0; */
+
+}
 .h-2 {
 
   height: 50%;
@@ -190,47 +236,49 @@ header {
   height: 40px;
   padding-top: 15px;
   padding-bottom: 15px;
-  background-image: url('../assets/header.png');
+  /* background-image: url('../assets/header.png'); */
   /* margin-bottom: 20px; */
 }
-
-section > div {
-  background: rgb(255, 255, 255);
-
-  margin-left: 20px;
-  margin-right: 20px;
-  /* border-radius:10px  10px 0px 0; */
-
-}
-
 .s-1 {
 
   border-radius: 10px 10px 0px 0;
-  height: 400px;
+   background: white;
+  
+  /* height: 400px; */
 }
 
 .s-1-1 {
 
-  background: rgb(255, 255, 255);
+ background: white;
   border-radius: 10px 10px 0px 0;
   padding-top: 10px;
   padding-bottom: 10px;
-  margin-left: 20px;
-  margin-bottom: 10px;
+  padding-left: 20px;
+  
   /* font-size: 13px; */
 }
 
 .s-1-2 {
-  background: rgb(255, 255, 255);
+  
   margin-left: 20px;
+  
 
 }
 
 .s-2 {
   margin-left: 15px;
+  margin-right: 10px;
 }
-
+.custom-field-font{
+/* font-size: 10px; */
+padding: 10px;
+/* margin-left: 15px; */
+ 
+ 
+}
 .vvv {
   font-size: 10px;
+ 
+  
 }
 </style>
