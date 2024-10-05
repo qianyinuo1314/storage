@@ -1,11 +1,15 @@
 <template>
   <div class="about">
     <h1>This is an about page</h1>
+    
 <van-tabbar v-model="active">
-  <van-tabbar-item icon="home-o">标签</van-tabbar-item>
-  <van-tabbar-item icon="search">标签</van-tabbar-item>
-  <van-tabbar-item icon="friends-o">标签</van-tabbar-item>
-  <van-tabbar-item icon="setting-o">标签</van-tabbar-item>
+    <div style="margin: 16px;width:100%" >
+    <van-button round block type="primary" native-type="submit">
+                下一步
+              </van-button>
+    </div>
+ 
+  
 </van-tabbar>
 <!-- 轮播图 -->
 <van-swipe class="my-swipe" :autoplay="3000" indicator-color="white">

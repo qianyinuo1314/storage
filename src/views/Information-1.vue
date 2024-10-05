@@ -2,27 +2,27 @@
   <div class="sss">
     <header>
       <div class="h-1">
-        <!-- <van-row gutter="50">
-          <van-col span="8"> -->
+        <van-row gutter="50">
+          <van-col span="8">
             <!--            <a href="javascript:history.back()">-->
             <!--              <van-icon name="arrow-left"/>-->
             <!--            </a>-->
             <!-- 返回上一层页面 -->
-            <!-- <van-icon @click="router.back()" name="arrow-left"/>
+            <van-icon @click="router.back()" name="arrow-left"/>
           </van-col>
           <van-col span="16">信息采集</van-col>
-        </van-row> -->
-        <van-nav-bar
+        </van-row>
+        <!-- <van-nav-bar
          title="信息采集"
          left-text=""
          left-arrow
          @click-left="onClickLeft"
-         />
+         />-->
 
-      </div>
+      </div> 
       <div class="h-2">
         <!-- <van-progress :percentage="50" /> -->
-        <van-progress :percentage="25"
+        <van-progress :percentage="12.5"
                       stroke-width="8"
                       color="#fff"
                       :show-pivot="false"
@@ -106,23 +106,21 @@
                 </template>
               </van-field>
             </van-cell-group>
-            <!-- <div style="margin: 16px;">
+            <van-tabbar v-model="active">
+            <div style="margin: 10px;width:100%">
+              
               <van-button round block type="primary" native-type="submit">
                 下一步
               </van-button>
-            </div> -->
+              
+            </div>
+            </van-tabbar>
           </van-form>
         </div>
       </div>
     </section>
   </div>
-  <footer>
-  <div style="margin: 16px;">
-              <van-button round block type="primary" native-type="submit">
-                下一步
-              </van-button>
-            </div>
-  </footer>
+ 
   <div></div>
 
 </template>
@@ -134,10 +132,10 @@ import {Uploader} from 'vant';
 import {areaList} from '@vant/area-data';
 import {Progress} from 'vant';
 import router from "@/router";
-import { ConfigProvider } from 'vant';
+
 const active = ref(0);
 const showArea = ref(false);
-const onClickLeft = () => history.back();
+
 //文件上传
 const fileList = ref([]);
 const form = ref({
@@ -161,19 +159,6 @@ const onSubmit = () => {
 
 </script>
 <style scoped>
-.van-nav-bar{
-  background-color: var(--van-nav-bar-background);
-   color: var(--van-nav-bar-icon-color);
-}
-:root {
-  --van-blue: rgb(74, 93, 237);
-  --van-green: #10fe08;
-  --van-white:#ffffff;
-  --van-nav-bar-background: var(--van-blue);
-  --van-nav-bar-icon-color:var(var(--van-white));
- 
-}
-
 * {
   margin: 0;
   padding: 0;
@@ -261,6 +246,7 @@ section > div {
 .s-1-2 {
   
   margin-left: 20px;
+
   
 
 }
@@ -268,6 +254,7 @@ section > div {
 .s-2 {
   margin-left: 15px;
   margin-right: 10px;
+   padding-bottom: 40px;
 }
 .custom-field-font{
 /* font-size: 10px; */
