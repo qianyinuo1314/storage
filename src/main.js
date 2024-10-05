@@ -5,8 +5,10 @@ import router from './router'
 import store from './store'
 import { Col, Row } from 'vant';
 import { Form, Field, CellGroup } from 'vant';
+import { Pagination } from 'vant';
 createApp(App).use(store).use(router).use(Col).use(Row).mount('#app')
 const app = createApp();
 app.use(Form);
 app.use(Field);
 app.use(CellGroup);
+app.use(Pagination);

@@ -2,15 +2,27 @@
   <div class="about">
     <h1>This is an about page</h1>
     
+
+  
 <van-tabbar v-model="active">
-    <div style="margin: 16px;width:100%" >
-    <van-button round block type="primary" native-type="submit">
+   <van-tabbar-item name="home"
+   >
+    <div style=";width:100%;" >
+    <van-button  plain type="primary" native-type="submit" >
+                上一步
+              </van-button>
+    </div></van-tabbar-item>
+    <van-tabbar-item name="home" 
+   >
+    <div style=";width:100%;" >
+    <van-button  type="primary" native-type="submit">
                 下一步
               </van-button>
-    </div>
- 
-  
+    </div></van-tabbar-item>
 </van-tabbar>
+  
+<button>xiayiye</button>
+
 <!-- 轮播图 -->
 <van-swipe class="my-swipe" :autoplay="3000" indicator-color="white">
   <van-swipe-item >
@@ -149,6 +161,7 @@
 
 
 // <script>
+
 import { ref } from 'vue';
 import { closeToast, showLoadingToast } from 'vant';
 // export default {
@@ -253,6 +266,18 @@ const username = ref('');
     font-size: 40px;
   }
   .inset{}
+  .fenye{
+    float: left;
+
+  }
+   .fenye1{
+    float: left;
+
+  }
+   .fenye3{
+    float: left;
+
+  }
 </style>
 
 

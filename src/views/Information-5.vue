@@ -116,15 +116,24 @@ color="#fff"
             </template>
            </van-field>
 </van-cell-group>
- <van-tabbar v-model="active">
-            <div style="margin: 10px;width:100%">
-              
-              <van-button round block type="primary" native-type="submit">
+
+<van-tabbar v-model="active">
+   <van-tabbar-item name="home"
+   >
+    <div style="margin: 10px;width:120px;padding:10px ">
+    <van-button  plain type="primary" native-type="submit" width:80px  block >
+                上一步
+              </van-button>
+    </div>
+    </van-tabbar-item>
+    <van-tabbar-item name="home" 
+   >
+    <div style="margin: 10px;width:120px;padding:10px ">
+    <van-button  type="primary" native-type="submit" width:80px  block>
                 下一步
               </van-button>
-              
-            </div>
-            </van-tabbar>
+    </div></van-tabbar-item>
+</van-tabbar>
 </van-form>
                 
                 
@@ -151,7 +160,7 @@ import { DatePicker } from 'vant';
 import router from "@/router"; 
  const active = ref(0);
  const showArea = ref(false);
-     const checked1 = ref('1');
+     const checked1 = ref('');
      const checked2= ref('1');
      const checked3 = ref('1');
    
