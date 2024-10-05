@@ -8,8 +8,8 @@
   <van-col span="8">
     <a href="javascript:history.back()"><van-icon name="arrow-left" /></a>
     </van-col>
- 
-  <van-col span="16">信息采集</van-col>
+  <van-col span="8">信息采集</van-col>
+  <van-col span="8"></van-col>
 </van-row>
 
 </div> 

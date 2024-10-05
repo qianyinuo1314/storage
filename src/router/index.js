@@ -45,6 +45,16 @@ const routes = [
   component:()=>import('../views/Information-2.vue'),
 },
 {
+  path: '/Information-3',
+  name: 'Information-3',
+  component:()=>import('../views/Information-4.vue'),
+},
+{
+  path: '/Information-4',
+  name: 'Information-4',
+  component:()=>import('../views/Information-4.vue'),
+},
+{
   path: '/Information-5',
   name: 'Information-5',
   component:()=>import('../views/Information-5.vue'),

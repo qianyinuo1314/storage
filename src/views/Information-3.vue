@@ -22,46 +22,59 @@
     <!-- <van-progress :percentage="50" /> -->
 
   
-   <van-progress :percentage="62.5" 
+   <van-progress :percentage="50" 
 stroke-width="8" 
 color="#fff" 
  :show-pivot="false"
   track-color="#855E4230 " />
 </div>
      <div class="s-1">
-        <div class="s-1-1"> 业主情况</div>
+        <div class="s-1-1">技术路线与指标</div>
        
         <div class="s-1-2">
              <van-form @submit="onSubmit"  >
              <van-cell-group inset >
+                 <van-field name="radio" label="是否梯次利用"
+                class="custom-field-font"
+               required
+               label-align="top"
+              >
+               <template #input>
+              <van-radio-group v-model="checked" direction="horizontal">
+              <van-radio name="1" icon-size="18px" >是&nbsp&nbsp&nbsp&nbsp</van-radio>
+              <van-radio name="2" icon-size="18px">否</van-radio>
+            </van-radio-group>
+            </template>
+           </van-field>
+                <van-field class="custom-field-font"
+                         required
+                         v-model="form.result"
+                         is-link
+                         readonly
+                         label-align="top"
+                         name="area"
+                         label="并网点位置"
+                         placeholder="请输入"
+                         @click="showArea = true"
+              />
+              <van-popup v-model:show="showArea" position="bottom">
+                <van-area
+                    :area-list="areaList"
+                   
+                    @confirm="onConfirm"
+                    @cancel="showArea = false"
+                />
+              </van-popup>
                 <van-field class="custom-field-font"
                          v-model="form.tzf"
-                         name="投资方"
+                         name="并网电压等级(千伏)"
                          required
-                         label="投资方"
+                         label="并网电压等级(千伏)"
                          placeholder="请输入"
                          label-align="top"
                          :rules="[{ required: true, message: '请输入' }]"
               />
-                <van-field class="custom-field-font"
-                         v-model="form.name"
-                         name="业主单位名称"
-                         required
-                         label="业主单位名称"
-                         placeholder="请输入"
-                         label-align="top"
-                         :rules="[{ required: true, message: '请输入' }]"
-              />
-                <van-field class="custom-field-font"
-                         v-model="form.company"
-                         name="业主单位所属集团"
-                         required
-                         label="业主单位所属集团"
-                         placeholder="请输入"
-                         label-align="top"
-                         :rules="[{ required: true, message: '请输入' }]"
-              />
-                <van-field name="radio" label="业主单位是否公司系统企业"
+                <van-field name="radio" label="是否独立计量"
                 class="custom-field-font"
                required
                label-align="top"
@@ -73,16 +86,7 @@ color="#fff"
             </van-radio-group>
             </template>
            </van-field>
-             <van-field class="custom-field-font"
-                         v-model="form.company1"
-                         name="承租或使用单位名称"
-                         required
-                         label="承租或使用单位名称"
-                         placeholder="请输入"
-                         label-align="top"
-                         :rules="[{ required: true, message: '请输入' }]"
-              />
-               <van-field name="radio" label="租用单位是否公司系统企业"
+          <van-field name="radio" label="是否接入调度"
                 class="custom-field-font"
                required
                label-align="top"
@@ -94,16 +98,7 @@ color="#fff"
             </van-radio-group>
             </template>
            </van-field>
-              <van-field class="custom-field-font"
-                         v-model="form.company2"
-                         name="运维单位公司名称"
-                         required
-                         label="运维单位公司名称"
-                         placeholder="请输入"
-                         label-align="top"
-                         :rules="[{ required: true, message: '请输入' }]"
-              />
-              <van-field name="radio" label="运维单位是否公司系统企业"
+              <van-field name="radio" label="是否接入调度AGC指令能力"
                 class="custom-field-font"
                required
                label-align="top"
@@ -142,15 +137,14 @@ color="#fff"
      </div>
 
      </div>
-     
-    
-     
      </section>
      </div>
      <div></div>
      
 </template>
 <script setup>
+import {areaList} from '@vant/area-data';
+import { Area } from 'vant';
 import { createApp } from 'vue';
 import { NavBar } from 'vant';
 import { Progress } from 'vant';
@@ -160,6 +154,7 @@ import { DatePicker } from 'vant';
 import router from "@/router"; 
  const active = ref(0);
  const showArea = ref(false);
+     const checked = ref('');
      const checked1 = ref('');
      const checked2= ref('1');
      const checked3 = ref('1');
