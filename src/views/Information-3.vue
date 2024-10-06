@@ -22,7 +22,7 @@
     <!-- <van-progress :percentage="50" /> -->
 
   
-   <van-progress :percentage="50" 
+   <van-progress :percentage="37.5" 
 stroke-width="8" 
 color="#fff" 
  :show-pivot="false"
@@ -36,7 +36,7 @@ color="#fff"
              <van-cell-group inset >
                  <van-field name="radio" label="是否梯次利用"
                 class="custom-field-font"
-               required
+            
                label-align="top"
               >
                <template #input>
@@ -47,76 +47,98 @@ color="#fff"
             </template>
            </van-field>
                 <van-field class="custom-field-font"
-                         required
+                        
                          v-model="form.result"
                          is-link
                          readonly
                          label-align="top"
-                         name="area"
-                         label="并网点位置"
+                         name="picker"
+                         label="技术类型细分"
                          placeholder="请输入"
-                         @click="showArea = true"
+                         @click="showPicker = true"
               />
-              <van-popup v-model:show="showArea" position="bottom">
-                <van-area
-                    :area-list="areaList"
+              <van-popup v-model:show="showPicker" position="bottom">
+                <van-picker
+                     :columns="columns"
                    
                     @confirm="onConfirm"
-                    @cancel="showArea = false"
+                    @cancel="showPicker = false"
                 />
               </van-popup>
-                <van-field class="custom-field-font"
-                         v-model="form.tzf"
-                         name="并网电压等级(千伏)"
+              <van-field class="custom-field-font"
+                        
+                         v-model="form.result1"
+                         is-link
+                         readonly
+                         label-align="top"
+                         name="picker"
+                         label="新型储能生产厂家"
+                         placeholder="请输入"
+                         @click="showPicker = true"
+              />
+              <van-popup v-model:show="showPicker" position="bottom">
+                <van-picker
+                     :columns="manufactor"
+                   
+                    @confirm="onConfirm1"
+                    @cancel="showPicker = false"
+                />
+              </van-popup>
+                    <van-field class="custom-field-font"
                          required
-                         label="并网电压等级(千伏)"
+                         v-model="form.result1"
+                         is-link
+                         readonly
+                         label-align="top"
+                         name="picker"
+                         label="额定充电功率(千瓦)"
+                         placeholder="请输入"
+                         @click="showPicker = true"
+              />
+              <van-popup v-model:show="showPicker" position="bottom">
+                <van-picker
+                     :columns="manufactor"
+                   
+                    @confirm="onConfirm1"
+                    @cancel="showPicker = false"
+                />
+              </van-popup>
+                 <van-field class="custom-field-font"
+                         v-model="form.name"
+                         name="额定放电功率(千瓦)"
+                         
+                         label="额定放电功率(千瓦)"
                          placeholder="请输入"
                          label-align="top"
                          :rules="[{ required: true, message: '请输入' }]"
               />
-                <van-field name="radio" label="是否独立计量"
-                class="custom-field-font"
-               required
-               label-align="top"
-              >
-               <template #input>
-              <van-radio-group v-model="checked1" direction="horizontal">
-              <van-radio name="1" icon-size="18px" >是&nbsp&nbsp&nbsp&nbsp</van-radio>
-              <van-radio name="2" icon-size="18px">否</van-radio>
-            </van-radio-group>
-            </template>
-           </van-field>
-          <van-field name="radio" label="是否接入调度"
-                class="custom-field-font"
-               required
-               label-align="top"
-              >
-               <template #input>
-              <van-radio-group v-model="checked2" direction="horizontal">
-              <van-radio name="3" icon-size="18px" >是&nbsp&nbsp&nbsp&nbsp</van-radio>
-              <van-radio name="4" icon-size="18px">否</van-radio>
-            </van-radio-group>
-            </template>
-           </van-field>
-              <van-field name="radio" label="是否接入调度AGC指令能力"
-                class="custom-field-font"
-               required
-               label-align="top"
-              >
-               <template #input>
-              <van-radio-group v-model="checked3" direction="horizontal">
-              <van-radio name="5" icon-size="18px" >是&nbsp&nbsp&nbsp&nbsp</van-radio>
-              <van-radio name="6" icon-size="18px">否</van-radio>
-            </van-radio-group>
-            </template>
-           </van-field>
+              <van-field class="custom-field-font"
+                         v-model="form.name"
+                         name="额定能量(千瓦)"
+                         
+                         label="额定能量(千瓦)"
+                         placeholder="请输入"
+                         label-align="top"
+                         :rules="[{ required: true, message: '请输入' }]"
+              />
+            
+                 <van-field class="custom-field-font"
+                         v-model="form.name"
+                         name="额定充放电率"
+                         
+                         label="额定充放电率"
+                         placeholder="请输入"
+                         label-align="top"
+                         :rules="[{ required: true, message: '请输入' }]"
+              />
+                
 </van-cell-group>
 
 <van-tabbar v-model="active">
    <van-tabbar-item name="home"
    >
     <div style="margin: 10px;width:120px;padding:10px ">
-    <van-button  plain type="primary" native-type="submit" width:80px  block >
+    <van-button  plain type="primary" native-type="submit" width:80px  block  @click="router.back()">
                 上一步
               </van-button>
     </div>
@@ -143,6 +165,7 @@ color="#fff"
      
 </template>
 <script setup>
+
 import {areaList} from '@vant/area-data';
 import { Area } from 'vant';
 import { createApp } from 'vue';
@@ -162,19 +185,42 @@ import router from "@/router";
    //表单验证基础用法
 const fileList = ref([]);
 const form = ref({
-  result: '',
+  result1: '',
+  result:'',
   tzf:'',
   name: '',
   company:'',
   company1: '',
   company2: '',
-})
+});
+ const showPicker = ref(false);
+    const columns = ref([
+      { text: '传感器采集', value: '传感器采集' },
+      { text: '爬虫采集', value: '爬虫采集' },
+      { text: '录入采集', value: '录入采集' },
+      { text: '导入采集', value: '导入采集' },
+      { text: '接口采集', value: '接口采集' },
+    ]);
+     const manufactor =ref( [
+      { text: '1111', value: '传感器采集' },
+      { text: '爬虫采集', value: '爬虫采集' },
+      { text: '录入采集', value: '录入采集' },
+      { text: '导入采集', value: '导入采集' },
+      { text: '接口采集', value: '接口采集' },
+    ]);
 const onConfirm = ({selectedOptions}) => {
-  showArea.value = false;
-  form.value.result = selectedOptions.map((item) => item.text).join('/');
+ 
+  form.value.result = selectedOptions[0]?.text;
+
+  showPicker.value = false;
 };
+const onConfirm1 = ({selectedOptions}) => {
+   form.value.result1 = selectedOptions[0]?.text;
+  showPicker.value = false;
+};
+
+
 const onSubmit = () => {
-  
   router.push('/Information-1')
 };
 
@@ -248,10 +294,11 @@ section>div
     background: rgb(255, 255, 255);
      border-radius:10px  10px 0px 0;
     padding-top: 10px;
-    padding-bottom: 10px;
+    /* padding-bottom: 10px; */
     margin-left: 20px;
+    /* margin-top: ; */
     margin-bottom: 10px;
-     font-size: 13px;
+     font-size: 17px;
 }
 .s-1-2{
     background: rgb(255, 255, 255);

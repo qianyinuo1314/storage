@@ -47,7 +47,7 @@ const routes = [
 {
   path: '/Information-3',
   name: 'Information-3',
-  component:()=>import('../views/Information-4.vue'),
+  component:()=>import('../views/Information-3.vue'),
 },
 {
   path: '/Information-4',
