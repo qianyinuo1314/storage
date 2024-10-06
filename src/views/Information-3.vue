@@ -202,7 +202,7 @@ const form = ref({
       { text: '接口采集', value: '接口采集' },
     ]);
      const manufactor =ref( [
-      { text: '1111', value: '传感器采集' },
+      { text: '第二个', value: '传感器采集' },
       { text: '爬虫采集', value: '爬虫采集' },
       { text: '录入采集', value: '录入采集' },
       { text: '导入采集', value: '导入采集' },
